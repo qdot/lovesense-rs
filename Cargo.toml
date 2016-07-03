@@ -11,3 +11,4 @@ keywords = ["usb", "hardware"]
 
 [dependencies]
 serial="0.3.4"
+clap = {version = "2", features = ["yaml"]}
