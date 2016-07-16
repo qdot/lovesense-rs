@@ -1,11 +1,11 @@
 [package]
-name = "liblovense"
+name = "lovesense"
 version = "0.1.0"
 authors = ["Kyle Machulis <kyle@machul.is>"]
 description = "Rust library for accessing Lovense Hardware (Max, Nora, Lush, Hush, etc...)"
 license = "BSD-3-Clause"
-homepage = "http://github.com/metafetish/liblovense-rs"
-repository = "https://github.com/metafetish/liblovense-rs.git"
+homepage = "http://github.com/metafetish/lovesense-rs"
+repository = "https://github.com/metafetish/lovesense-rs.git"
 readme = "README.md"
 keywords = ["usb", "hardware"]
 

@@ -1,13 +1,13 @@
 use serial;
 use std::string::String;
 
-pub struct LovenseDevice<'a> {
+pub struct LovesenseDevice<'a> {
     port: Box<serial::SerialPort + 'a>
 }
 
-impl<'a> LovenseDevice<'a> {
-    pub fn new(port_name: &str) -> LovenseDevice<'a> {
-        LovenseDevice { port: Box::new(serial::open(&port_name).unwrap()) }
+impl<'a> LovesenseDevice<'a> {
+    pub fn new(port_name: &str) -> LovesenseDevice<'a> {
+        LovesenseDevice { port: Box::new(serial::open(&port_name).unwrap()) }
     }
 
     fn write(mut self, command: &[u8]) -> Result<String, String> {
