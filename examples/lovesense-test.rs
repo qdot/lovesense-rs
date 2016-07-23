@@ -11,13 +11,27 @@ fn main() {
     let port = matches.value_of("port").unwrap();
     println!("Connecting to {}...", port);
     let mut d = LovesenseDevice::new(port);
-    let speed = value_t!(matches, "speed", u8).unwrap_or(0);
-    let _ = d.set_vibrate(speed);
+
+    if matches.is_present("speed") {
+        let speed = value_t!(matches, "speed", u8).unwrap_or(0);
+        match d.set_vibrate(speed) {
+            Ok(_) => println!("Speed set to {}", speed),
+            Err(s) => println!("{}", s)
+        }
+    }
+
     if matches.is_present("info") {
-        let result = d.battery_level();
-        match result {
+        match d.device_type() {
             Ok(s) => println!("Device: {}", s),
             Err(s) => println!("{}", s)
         }
     }
+
+    if matches.is_present("battery") {
+        match d.battery_level() {
+            Ok(s) => println!("Battery Level: {}%", s),
+            Err(s) => println!("{}", s)
+        }
+    }
+
 }

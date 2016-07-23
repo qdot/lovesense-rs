@@ -20,4 +20,8 @@ args:
         short: i
         long: info
         help: Prints out device info
+    - battery:
+        short: b
+        long: battery
+        help: Prints out battery level
 
