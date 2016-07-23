@@ -14,14 +14,34 @@ args:
         short: s
         long: speed
         value_name: SPEED
-        help: Speed to set vibration motor to
+        help: Speed to set vibration motor to (0-20)
         takes_value: true
-    - info:
-        short: i
-        long: info
-        help: Prints out device info
+    - type:
+        short: t
+        long: type
+        help: Prints out device type (Index, Version, BTID)
     - battery:
         short: b
         long: battery
         help: Prints out battery level
-
+    - rotate:
+        short: r
+        long: rotate
+        value_name: ROTATE
+        help: Speed to rotate at (0-4)
+        takes_value: true
+    - power_off:
+        long: power_off
+        help: Turns off toy
+    - status:
+        long: status
+        help: Shows device status (2 is OK)
+    - air_level:
+        short: a
+        long: air
+        value_name: AIR
+        help: Level to set air pump to
+        takes_value: true
+    - change_direction:
+        long: change_direction
+        help: Change direction of rotation
