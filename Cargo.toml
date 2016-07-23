@@ -1,6 +1,6 @@
 [package]
 name = "lovesense"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Kyle Machulis <kyle@machul.is>"]
 description = "Rust library for accessing Lovense Hardware (Max, Nora, Lush, Hush, etc...)"
 license = "BSD-3-Clause"
