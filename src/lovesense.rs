@@ -20,7 +20,8 @@ impl<'a> LovesenseDevice<'a> {
         if s != command.len() {
             panic!("Didn't write all bytes!");
         }
-        let mut buf: Vec<u8> = (0..255).collect();
+        // This doesn't really handle accelerometer stuff but oh well.
+        let mut buf = Vec::with_capacity(20);
         self.port.read(&mut buf [..]);
         let ret_str = String::from_utf8(buf).unwrap();
         if ret_str == "ER;" {
