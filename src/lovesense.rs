@@ -91,6 +91,6 @@ impl<'a> LovesenseDevice<'a> {
     }
 
     pub fn device_status(&mut self) -> Result<String, String> {
-        self.write(b"DeviceStatus:1;")
+        self.write(b"Status:1;")
     }
 }
