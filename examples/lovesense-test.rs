@@ -26,7 +26,7 @@ fn main() {
     println!("Connecting to {}...", port);
     let mut d = LovesenseDevice::new(port);
 
-    cmd!(matches, "info", d.device_type(), "Device: {}");
+    cmd!(matches, "type", d.device_type(), "Device: {}");
     cmd!(matches, "battery", d.battery_level(), "Battery Level: {}");
     cmd!(matches, "status", d.device_status(), "Status: {}");
     cmd!(matches, "power_off", d.power_off(), "Device powered off: {}");
