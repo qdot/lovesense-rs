@@ -6,11 +6,13 @@ use std::string::String;
 pub struct LovesenseDevice<'a> {
     port: Box<serial::SerialPort + 'a>
 }
+
 impl<'a> LovesenseDevice<'a> {
     pub fn new(port_name: &str) -> LovesenseDevice<'a> {
         LovesenseDevice { port: {
             let mut s = serial::open(&port_name).unwrap();
-            s.set_timeout(Duration::from_secs(1));
+            // Timeout needs to be weirdly high. Bluetooth!
+            let _ = s.set_timeout(Duration::from_secs(5));
             Box::new(s)
         }
         }
@@ -27,14 +29,12 @@ impl<'a> LovesenseDevice<'a> {
             panic!("Didn't write all bytes!");
         }
         // This doesn't really handle accelerometer stuff but oh well.
-        let mut buf = Vec::with_capacity(2);
-        let mut val : usize = self.port.read(&mut buf [..]).unwrap();
-        while val == 0 {
-            val = self.port.read(&mut buf [..]).unwrap();
+        let mut buf = vec![0; 100];
+        let val : usize = self.port.read(&mut buf).unwrap();
+        if val == 0 {
+            panic!("Got back 0 bytes!");
         }
-        println!("Read size: {}", val);
         let ret_str = String::from_utf8(buf).unwrap();
-        println!("{}", ret_str);
         if ret_str == "ER;" {
             return Err(ret_str);
         }
