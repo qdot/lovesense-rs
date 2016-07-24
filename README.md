@@ -8,9 +8,10 @@ level, and accelerometer readings.
 
 The library is currently available in the following languages:
 
-- Python 2 (http://github.com/metafetish/lovesense-py)
-- Max/MSP (http://github.com/metafetish/lovesense-max)
-- Rust (with C Headers) (http://github.com/metafetish/lovesense-rs)
+- [Python](http://github.com/metafetish/lovesense-py)
+- [Max/MSP](http://github.com/metafetish/lovesense-max)
+- [Rust (with C Headers)](http://github.com/metafetish/lovesense-rs)
+- [Javascript](http://github.com/metafetish/lovesense-js)
 
 If you need an implementation in a language not currently supported by
 lovesense, please file an issue on the github tracker of the relevant
