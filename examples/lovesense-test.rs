@@ -1,8 +1,9 @@
+#[macro_use]
 extern crate lovesense;
 #[macro_use]
 extern crate clap;
 use clap::{App};
-use lovesense::{LovesenseDevice};
+use lovesense::{LovesenseDevice, LovesenseProtocol};
 
 macro_rules! cmd {
     (
@@ -11,7 +12,7 @@ macro_rules! cmd {
         if $a.is_present($b) {
             match $c {
                 Ok(s) => println!($d, s),
-                Err(s) => println!("{}", s)
+                Err(s) => println!("{:?}", s)
             }
         }
     }
@@ -26,25 +27,25 @@ fn main() {
     println!("Connecting to {}...", port);
     let mut d = LovesenseDevice::new(port);
 
-    cmd!(matches, "type", d.device_type(), "Device: {}");
+    cmd!(matches, "info", d.device_type(), "Device: {}");
     cmd!(matches, "battery", d.battery_level(), "Battery Level: {}");
     cmd!(matches, "status", d.device_status(), "Status: {}");
-    cmd!(matches, "power_off", d.power_off(), "Device powered off: {}");
-    cmd!(matches, "change_direction", d.change_rotation_direction(), "Rotation Direction Changed: {}");
+    cmd!(matches, "power_off", d.power_off(), "Device powered off. {:?}");
+    cmd!(matches, "change_direction", d.change_rotation_direction(), "Rotation Direction Changed. {:?}");
 
     if matches.is_present("speed") {
         let speed = value_t!(matches, "speed", u8).unwrap_or(0);
-        match d.set_vibrate(speed) {
+        match d.vibrate(speed) {
             Ok(_) => println!("Speed set to {}", speed),
-            Err(s) => println!("{}", s)
+            Err(s) => println!("{:?}", s)
         }
     }
 
     if matches.is_present("rotate") {
         let speed = value_t!(matches, "rotate", u8).unwrap_or(0);
-        match d.set_rotate(speed) {
+        match d.rotate(speed) {
             Ok(_) => println!("Rotate set to {}", speed),
-            Err(s) => println!("{}", s)
+            Err(s) => println!("{:?}", s)
         }
     }
 }
