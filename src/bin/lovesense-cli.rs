@@ -21,8 +21,8 @@ macro_rules! cmd {
 
 fn main() {
     // The YAML file is found relative to the current file, similar to how modules are found
-    let yaml = load_yaml!("lovesense-test-cli.yml");
-    let matches = App::from_yaml(yaml).get_matches();
+    let yaml = load_yaml!("lovesense-cli.yml");
+    let matches = App::from_yaml(yaml).version(crate_version!()).get_matches();
     let port = matches.value_of("port").unwrap();
     println!("Connecting to {}...", port);
     let mut d = LovesenseDevice::new(port);
