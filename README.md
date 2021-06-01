@@ -1,4 +1,7 @@
-# lovesense
+# lovesense - DEPRECATED
+
+**This repository is deprecated. Please use the [buttplug-rs library](https://github.com/buttplugio/buttplug-rs) instead.**
+
 
 [![Build Status](https://travis-ci.org/metafetish/lovesense-rs.svg?branch=master)](https://travis-ci.org/metafetish/lovesense-rs) [![Build status](https://ci.appveyor.com/api/projects/status/34jyv6e0w32korfj?svg=true)](https://ci.appveyor.com/project/qdot/lovesense-rs) [![Crates.io](https://img.shields.io/crates/v/lovesense.svg)](https://crates.io/crates/lovesense)
 
